@@ -7,4 +7,5 @@
 Linux vmware ( CenstOS ),
 IaC ( Terraform )
 
-테라폼 코드는 terraform디렉터리 아래에 각자 AWS디렉터리, Openstack디렉터리를 생성 후 작성.
+테라폼 코드만 있으며,
+terraform디렉터리 아래에 각자 AWS디렉터리, Openstack디렉터리를 생성 후 작성.
