@@ -1,3 +1,5 @@
+vim autoscaling.tf
+
 ########### create auto scaling group ##########
 
 resource "aws_autoscaling_group" "test_ag1" {
@@ -15,3 +17,8 @@ resource "aws_autoscaling_group" "test_ag1" {
                 version = "$Latest"
         }
 }
+
+:wq
+
+tf plan
+tf apply
