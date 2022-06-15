@@ -1,0 +1,29 @@
+# Provider.tf
+terraform {
+  required_version = "1.2.2"
+
+  required_providers {
+      aws = {
+          source = "hashicorp/aws"
+          version = "~> 3.0"
+      }
+  }
+}
+provider "aws" {
+  region     = "ap-northeast-2"
+  # 옵션 access_key 와 secert_key 를 파일에 적어서 구현할 수는 있지만 권장하지 않습니다.
+  # access_key = ""
+  # secret_key = ""
+}
+
+
+# 사용자 인증
+resource "aws_key_pair" "Test_EC2_key" {
+  key_name = "TF_Test_Key"
+  public_key = file("./testPubkey.pub")
+}
+
+data "template_file" "Test_User_Data" {
+  template = file("Test_Web.sh")
+}
+
