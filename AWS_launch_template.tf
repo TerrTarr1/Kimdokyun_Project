@@ -1,3 +1,5 @@
+vim launch_template.tf
+
 ########## create launch template ##########
 resource "aws_launch_template" "test_launch_template" {
         name = "test_launch_template"
@@ -12,3 +14,8 @@ resource "aws_launch_template" "test_launch_template" {
 
         depends_on = [ aws_nat_gateway.test_nat, aws_rds_cluster_instance.test_cluster_instances, aws_rds_cluster.test_cluster  ]
 }
+
+:wq
+
+tf plan
+tf apply
