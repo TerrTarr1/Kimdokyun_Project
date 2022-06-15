@@ -1,3 +1,5 @@
+vim sec.tf
+
 ########## create security group ##########
 
 ##### Public Security Group #####
@@ -213,4 +215,7 @@ resource "aws_security_group_rule" "Test_Private_DB_SG_Rule_egress" {
         }
 }
 
+:wq
 
+tf plan
+tf apply
