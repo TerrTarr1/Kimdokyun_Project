@@ -1,3 +1,5 @@
+vim rds.tf
+
 ########## create RDS Mysql DB instance ##########\
 
 ##### subnet group #####
@@ -53,3 +55,7 @@ resource "aws_rds_cluster_instance" "test_cluster_instances" {
         db_parameter_group_name = aws_db_parameter_group.test_db_parameter_group.name
 }
 
+:wq
+
+tf plan
+tf apply
