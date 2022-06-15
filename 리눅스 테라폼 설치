@@ -1,0 +1,46 @@
+# 테라폼 디렉터리 생성 후, 거기에 테라폼 설치
+yum install -y yum-utils
+yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+yum -y install terraform
+
+
+# 테라폼 AWS 연동
+terraform {
+  required_version = "1.2.2"
+
+  required_providers {
+      aws = {
+          source = "hashicorp/aws"
+          version = "~> 3.0"
+      }
+  }
+}
+provider "aws" {
+  region     = "ap-northeast-2"
+  
+  # access_key 와 secert_key 는 옵션으로서 파일에 적어서 구현할 수는 있지만 권장하지 않습니다.
+  # access_key = ""
+  # secret_key = ""
+}
+terraform init
+
+
+
+# 테라폼 Openstack 연동
+terraform {
+  required_version = ">= 1.1.9"
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = "~> 1.43.0"
+    }
+  }
+}
+provider "openstack" {
+  user_name = "test_admin"
+  tenant_name = "test_tenant"
+  password = "1234"
+  auth_url = "auth_url: http://192.168.108.80:5000/v3"         # terraform Openstack 코드에서 clouds.yam 참고!
+  cloud = "openstack"
+}  
+terraform init        
