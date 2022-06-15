@@ -1,3 +1,5 @@
+vim vpc.tf
+
 ########## create vpc ##########
 
 resource "aws_vpc" "Test_VPC" {
@@ -147,5 +149,8 @@ resource "aws_nat_gateway" "test_nat" {
         connectivity_type = "public"
 }
 
+:wq
 
+terraform plan
+terraform apply
 
