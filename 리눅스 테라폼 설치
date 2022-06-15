@@ -5,6 +5,11 @@ yum -y install terraform
 
 
 # AWS 디렉터리 생성 후, 테라폼 AWS 연동
+
+cd ./terraform/aws
+vim provider.tf
+
+
 terraform {
   required_version = "1.2.2"
 
@@ -22,11 +27,21 @@ provider "aws" {
   # access_key = ""
   # secret_key = ""
 }
+
+
+
+:wq
 terraform init
 
 
 
-# Openstack 디렉터리 생성 후, 테라폼 Openstack 연동
+##### Openstack 디렉터리 생성 후, 테라폼 Openstack 연동
+
+cd ./terraform/openstack
+vim provider.tf
+
+
+
 terraform {
   required_version = ">= 1.1.9"
   required_providers {
@@ -43,4 +58,8 @@ provider "openstack" {
   auth_url = "auth_url: http://192.168.108.80:5000/v3"         # terraform Openstack 코드에서 clouds.yam 참고!
   cloud = "openstack"
 }  
+
+
+
+:wq
 terraform init        
