@@ -1,0 +1,24 @@
+##### 다른 vm 에서 오픈스택 환경을 구축하고, 테라폼 vm 으로 옮겨서 작업하기 위한 코드.
+
+vim clouds.yaml
+
+clouds:
+  openstack:
+
+    auth:
+
+      auth_url: http://192.168.108.80:5000/v3
+
+      application_credential_id: "df82fdbcd4ec4f4d815a6f3dfe64dd78"
+      application_credential_secret: "1234"
+
+
+
+    region_name: "RegionOne"
+
+
+    interface: "public"
+    identity_api_version: 3
+    auth_type: "v3applicationcredential"
+    
+    :wq
