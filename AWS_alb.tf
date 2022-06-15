@@ -1,3 +1,5 @@
+vim alb.tf
+
 ########## create load balancer target group ##########
 
 resource "aws_lb_target_group" "test_tg" {
@@ -40,3 +42,8 @@ resource "aws_autoscaling_attachment" "asg_attachment_tg" {
         autoscaling_group_name = "${aws_autoscaling_group.test_ag1.id}"
         alb_target_group_arn = "${aws_lb_target_group.test_tg.arn}"
 }
+
+:wq
+
+tf plan
+tf apply
