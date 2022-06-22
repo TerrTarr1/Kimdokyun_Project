@@ -1,0 +1,121 @@
+################# 1.  Web server ###############
+
+yum -y update
+yum -y install vim net-tools unzip
+
+######## install Apache ########
+
+yum -y install httpd
+systemctl enable --now httpd
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
+
+
+######## install php #########
+
+yum install epel-release yum-utils -y
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+yum-config-manager --enable remi-php73 -y
+yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd -y
+
+vim /etc/httpd/conf/httpd.conf
+<ifModule dir_module>
+DirectoryIndex index.php,index.html      #index.php,index.html 추가
+:wq
+
+
+systemctl restart httpd
+
+######## install mariaDB #########
+
+
+yum install -y mariadb mariadb-server
+systemctl start mariadb
+
+########### file upload ##############
+#windows cmd)
+scp C:\Basic_Web.zip root@192.168.108.21:/var/www/html/
+yes
+
+#php파일 있는 곳에 dbconn.inc 수정
+$servername = '192.168.108.20';    # 마리아db 서버 주소
+$username = 'root';                # mariadb 접속id
+$password = 'toor';                # mariadb 접속 password
+$db_name = 'kgitbank';             # 생성한 db
+
+#test.sql 수정
+USE kgitbank;                      # 생성한 db하고 이름 똑같이
+
+########## login db #################
+
+mysql -uroot -p -h 192.168.108.51
+dkagh1.
+
+
+
+######################### 2. MariaDB server ########################
+
+####install mariadb server #####
+yum -y update
+yum -y install vim
+
+vim /etc/yum.repos.d/MariaDB.repo
+
+# MariaDB 10.7 CentOS repository list - created 2022-06-09 10:24 UTC
+....
+# https://mariadb.org/download/
+[mariadb]
+name = MariaDB
+baseurl = https://ftp.harukasan.org/mariadb/yum/10.7/centos7-amd64
+gpgkey=https://ftp.harukasan.org/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+:wq
+
+
+sudo yum -y install mariadb-server
+systemctl enable --now mariadb
+firewall-cmd --permanent --add-service=mysql
+firewall-cmd --reload
+
+
+mysql -u root -p
+
+mysqladmin -u root password dkagh1.
+
+mysql -uroot -p'dkagh1.'
+
+grant all privileges on *.* to 'root'@'%' identified by 'dkagh1.';
+flush privileges;
+
+CREATE DATABASE kgitbank;
+
+USE kgitbank;
+
+CREATE TABLE subject(
+   id int(11) NOT NULL AUTO_INCREMENT,
+   title varchar(45) NOT NULL,
+   description text,
+   created datetime NOT NULL,
+   PRIMARY KEY(id)
+) ENGINE = InnoDB;
+
+SHOW TABLES;
+DESC subject;
+
+CREATE TABLE author(
+   id INT(11) NOT NULL AUTO_INCREMENT,
+        name VARCHAR(30) NOT NULL,
+        profile VARCHAR(200) NULL,
+        PRIMARY KEY(id)
+);
+INSERT INTO author(name, profile) VALUES ('Kim', 'Network Instructor');
+INSERT INTO author(name, profile) VALUES ('Lee', 'Server Instructor');
+INSERT INTO author(name, profile) VALUES ('Park', 'Security Instructor');
+
+ALTER TABLE subject ADD COLUMN author_id INT(11);
+
+show databases;
+
+exit
+
+systemctl restart mariadb
