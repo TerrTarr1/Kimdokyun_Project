@@ -1,6 +1,6 @@
 vim vpc.tf
 
-########## create vpc ##########
+######## create vpc ########
 
 resource "aws_vpc" "Test_VPC" {
         cidr_block = "192.168.0.0/16"
@@ -10,9 +10,9 @@ resource "aws_vpc" "Test_VPC" {
 }
 
 
-########## create subnet ##########
+######## create subnet ########
 
-##### public subnet1 #####
+### public subnet1 ###
 resource "aws_subnet" "Test_Public_Subnet_1" {
         vpc_id = aws_vpc.Test_VPC.id
         cidr_block = "192.168.1.0/24"
@@ -22,7 +22,7 @@ resource "aws_subnet" "Test_Public_Subnet_1" {
                 Name = "tf_Public_Subnet_1"
         }
 }
-##### public subnet2 #####
+### public subnet2 ###
 resource "aws_subnet" "Test_Public_Subnet_2" {
         vpc_id = aws_vpc.Test_VPC.id
         cidr_block = "192.168.3.0/24"
@@ -34,7 +34,7 @@ resource "aws_subnet" "Test_Public_Subnet_2" {
 }
 
 
-##### private subnet1 #####
+### private subnet1 ###
 resource "aws_subnet" "Test_Private_Subnet_1" {
         vpc_id = aws_vpc.Test_VPC.id
         cidr_block = "192.168.2.0/24"
@@ -44,7 +44,7 @@ resource "aws_subnet" "Test_Private_Subnet_1" {
                 Name = "tf_Private_Subnet_1"
         }
 }
-##### private subnet2 #####
+### private subnet2 ###
 resource "aws_subnet" "Test_Private_Subnet_2" {
         vpc_id = aws_vpc.Test_VPC.id
         cidr_block = "192.168.4.0/24"
@@ -54,7 +54,7 @@ resource "aws_subnet" "Test_Private_Subnet_2" {
                 Name = "tf_Private_Subnet_2"
         }
 }
-########## create internet gateway ##########
+######## create internet gateway ########
 
 resource "aws_internet_gateway" "Test_IGW" {
         vpc_id = aws_vpc.Test_VPC.id
@@ -63,9 +63,9 @@ resource "aws_internet_gateway" "Test_IGW" {
         }
 }
 
-########## create routing table ##########
+######## create routing table ########
 
-##### Public routing table #####
+### Public routing table ###
 
 resource "aws_route_table" "Test_Public_Route_1" {
         vpc_id = aws_vpc.Test_VPC.id
@@ -89,7 +89,7 @@ resource "aws_route_table" "Test_Public_Route_2" {
         }
 }
 
-##### Private routing table #####
+### Private routing table ###
 
 resource "aws_route_table" "Test_Private_Route_1" {
         vpc_id = aws_vpc.Test_VPC.id
@@ -117,7 +117,7 @@ resource "aws_route_table" "Test_Private_Route_2" {
         }
 }
 
-##### set Public Routing Table Connection #####
+### set Public Routing Table Connection ###
 
 resource "aws_route_table_association" "Test_Public_RT_Association_1" {
         subnet_id = aws_subnet.Test_Public_Subnet_1.id
@@ -129,7 +129,7 @@ resource "aws_route_table_association" "Test_Public_RT_Association_2" {
         route_table_id = aws_route_table.Test_Public_Route_2.id
 }
 
-###### set Private Routing Table Connection #####
+#### set Private Routing Table Connection ###
 
 resource "aws_route_table_association" "Test_Private_RT_Association_1" {
         subnet_id = aws_subnet.Test_Private_Subnet_1.id
@@ -142,7 +142,7 @@ resource "aws_route_table_association" "Test_Private_RT_Association_2" {
 }
 
 
-########## create nat gateway ##########
+######## create nat gateway ########
 resource "aws_nat_gateway" "test_nat" {
         allocation_id = "eipalloc-0db577d7eba0aa645"
         subnet_id = "${aws_subnet.Test_Public_Subnet_1.id}"
