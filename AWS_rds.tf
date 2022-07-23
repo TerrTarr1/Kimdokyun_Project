@@ -1,6 +1,6 @@
 vim rds.tf
 
-########## create RDS Mysql DB instance ##########\
+####### create RDS Mysql DB instance ########
 
 ##### subnet group #####
 
