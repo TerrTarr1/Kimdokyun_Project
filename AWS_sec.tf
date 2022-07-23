@@ -1,6 +1,6 @@
 vim sec.tf
 
-########## create security group ##########
+######## create security group ########
 
 ##### Public Security Group #####
 
@@ -22,7 +22,7 @@ resource "aws_security_group" "Test_Public_ALB_SG" {
         }
 }
 
-##### Private Security Group #####
+###### Private Security Group ######
 
 resource "aws_security_group" "Test_Private_WEB_SG" {
         vpc_id = aws_vpc.Test_VPC.id
@@ -42,7 +42,7 @@ resource "aws_security_group" "Test_Private_DB_SG_1" {
         }
 }
 
-##### Public SG rule #####
+###### Public SG rule ######
 
 ### public sg rule ###
 
@@ -110,7 +110,7 @@ resource "aws_security_group_rule" "Test_Public_ALB_SG_Rule_Egress" {
         }
 }
 
-##### Private SG rule #####
+###### Private SG rule ######
 
 #DB Rule
 
