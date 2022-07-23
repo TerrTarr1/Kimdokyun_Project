@@ -1,6 +1,6 @@
 vim launch_template.tf
 
-########## create launch template ##########
+####### create launch template ########
 resource "aws_launch_template" "test_launch_template" {
         name = "test_launch_template"
         image_id = "ami-0cbec04a61be382d9"
