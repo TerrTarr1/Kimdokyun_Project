@@ -1,5 +1,5 @@
 ### install HAproxy ###
-
+====================================================================================================
 yum install -y haproxy
 
 vi /etc/haproxy/haproxy.cfg
@@ -20,14 +20,16 @@ backend app
 firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
 systemctl enable --now haproxy
+====================================================================================================
 
 
 
 ### web 1, web 2 ###
-
+====================================================================================================
 yum -y install httpd
 systemctl enable --now httpd
 
 firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
 systemctl restart httpd
+====================================================================================================
