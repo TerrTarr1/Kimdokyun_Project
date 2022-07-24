@@ -1,6 +1,6 @@
 vim instance.tf
 
-####################### create instance
+##### create instance #####
 
 resource "openstack_compute_instance_v2" "basic" {
         name            = "basic"
