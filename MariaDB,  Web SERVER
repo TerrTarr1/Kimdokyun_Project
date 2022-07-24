@@ -26,8 +26,8 @@ DirectoryIndex index.php,index.html      ###index.php,index.html 추가
 systemctl restart httpd
 
 
-### install mariaDB ###
 
+### install mariaDB ###
 
 yum install -y mariadb mariadb-server
 systemctl start mariadb
@@ -37,13 +37,16 @@ scp C:\Basic_Web.zip root@192.168.108.21:/var/www/html/
 yes
 
 
-###php파일 있는 곳에 dbconn.inc 수정
+
+ 
+### php파일 있는 곳에 dbconn.inc 수정 ###
 $servername = '192.168.108.20';    ### 마리아db 서버 주소
 $username = 'root';                ### mariadb 접속id
 $password = 'toor';                ### mariadb 접속 password
 $db_name = 'kgitbank';             ### 생성한 db
 
-###test.sql 수정
+
+### 다른 파일에 있는 test.sql 수정
 USE kgitbank;                      ### 생성한 db하고 이름 똑같이
 
 
