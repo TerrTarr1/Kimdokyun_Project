@@ -1,5 +1,5 @@
 vim role.tf
-############################################################## user role
+#################################################### user role
 
 resource "openstack_identity_role_v3" "role_1" {
         name = "role_1"
@@ -19,7 +19,7 @@ tf apply
 
 
 vim flavor.tf
-#################################################### create flavor
+################################################### create flavor
 
 resource "openstack_compute_flavor_v2" "flavor_c1_tiny" {
   name  = "c1.tyni"
@@ -36,7 +36,7 @@ tf apply
 
 
 vim image.tf
-###################################################### create image
+################################################### create image
 
 resource "openstack_images_image_v2" "cirros" {
   name             = "cirros"
