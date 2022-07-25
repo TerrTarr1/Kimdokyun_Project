@@ -1,5 +1,5 @@
 vim project.tf
-###################################################### create project
+#################################################### create project
 
 resource "openstack_identity_project_v3" "test_project" {
         name = "test_project"
@@ -13,7 +13,7 @@ tf apply
 
 
 vim user.tf
-############################################################# create user
+#################################################### create user
 
 resource "openstack_identity_user_v3" "test_admin" {
         default_project_id = "${openstack_identity_project_v3.test_project.id}"
