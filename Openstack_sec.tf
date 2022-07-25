@@ -1,5 +1,7 @@
+
 vim sec.tf
-########################################################## security group - private network
+####################################################### security group - private network
+
 
 resource "openstack_networking_secgroup_v2" "private_network_SG_1" {
         name        = "private_network_SG_1"
