@@ -1,6 +1,6 @@
 vim network.tf
 
-##################################################### create Public network, subnet
+################################################### create Public network, subnet
 
 resource "openstack_networking_network_v2" "public_network_1" {
         name           = "public_network_1"
@@ -23,7 +23,7 @@ resource "openstack_networking_subnet_v2" "public_subnet_1" {
 }
 
 
-######################################################### create private network, subnet
+###################################################### create private network, subnet
 
 resource "openstack_networking_network_v2" "private_network_1" {
         name           = "private_network_1"
@@ -41,7 +41,7 @@ resource "openstack_networking_subnet_v2" "private_subnet_1" {
 }
 
 
-###################################################### create router
+#################################################### create router
 
 resource "openstack_networking_router_v2" "router_1" {
         name                = "router_1"
@@ -50,7 +50,7 @@ resource "openstack_networking_router_v2" "router_1" {
         tenant_id = openstack_identity_project_v3.test_project.id
 }
 
-##################################################### add interface
+################################################### add interface
 
 resource "openstack_networking_router_interface_v2" "router_interface_1" {
         router_id = openstack_networking_router_v2.router_1.id
