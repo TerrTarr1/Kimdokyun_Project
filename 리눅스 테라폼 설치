@@ -1,15 +1,16 @@
 # 테라폼 디렉터리 생성 후, 거기에 테라폼 설치
+=======================================================
 yum install -y yum-utils
 yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 yum -y install terraform
+=======================================================
 
 
 # AWS 디렉터리 생성 후, 테라폼 AWS 연동
-
+=======================================================
 cd ./terraform/aws
+
 vim provider.tf
-
-
 terraform {
   required_version = "1.2.2"
 
@@ -28,19 +29,15 @@ provider "aws" {
   # secret_key = ""
 }
 
-
-
 :wq
 terraform init
+=======================================================
 
 
-
-##### Openstack 디렉터리 생성 후, 테라폼 Openstack 연동
-
+# Openstack 디렉터리 생성 후, 테라폼 Openstack 연동
+=======================================================
 cd ./terraform/openstack
 vim provider.tf
-
-
 
 terraform {
   required_version = ">= 1.1.9"
@@ -60,6 +57,6 @@ provider "openstack" {
 }  
 
 
-
 :wq
 terraform init        
+=======================================================
