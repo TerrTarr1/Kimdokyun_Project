@@ -3,7 +3,5 @@
     $username = 'root';
     $password = '1234';
     $db_name = 'kgitbank';
-
     $conn = mysqli_connect($servername,$username,$password,$db_name);
-  
 ?>
