@@ -1,5 +1,5 @@
 # 오픈스택 환경설정 중
-
+===============================================================
 yum install openstack-packstack -y           # packstack install
 packstack --gen-answer-file=answer.conf      # 응답파일 생성
 
@@ -60,3 +60,5 @@ PermitRootLogin yes
 
 systemctl restart sshd
 packstack --answer-file answer.conf   # packstack 으로 설치
+
+===============================================================
