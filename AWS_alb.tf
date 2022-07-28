@@ -1,6 +1,6 @@
 vim alb.tf
 
-######## create load balancer target group ########
+######## create load balancer target group ######
 
 resource "aws_lb_target_group" "test_tg" {
         name = "test-tg"
@@ -11,7 +11,7 @@ resource "aws_lb_target_group" "test_tg" {
         vpc_id = "${aws_vpc.Test_VPC.id}"
 }
 
-######## create load balancer ########
+######## create load balancer ######
 
 resource "aws_lb" "test_lb" {
         name = "test-lb"
@@ -23,7 +23,7 @@ resource "aws_lb" "test_lb" {
         enable_deletion_protection = false
 }
 
-######## target group listener ########
+######## target group listener ######
 
 resource "aws_lb_listener" "test_lb_listener" {
         load_balancer_arn = "${aws_lb.test_lb.arn}"
@@ -36,7 +36,7 @@ resource "aws_lb_listener" "test_lb_listener" {
         }
 }
 
-######## load balancer & TG attachment ########
+######## load balancer & TG attachment ######
 
 resource "aws_autoscaling_attachment" "asg_attachment_tg" {
         autoscaling_group_name = "${aws_autoscaling_group.test_ag1.id}"
